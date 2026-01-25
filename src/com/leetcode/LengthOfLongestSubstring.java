@@ -7,23 +7,17 @@ public class LengthOfLongestSubstring {
 
     public static int lengthOfLongestSubstring(String s) {
         Set<Character> set = new HashSet<>();
-
         int left = 0;
         int maxLength = 0;
-
         for (int right = 0; right < s.length(); right++) {
             char currentChar = s.charAt(right);
-
-            // Remove characters until duplicate is removed
             while (set.contains(currentChar)) {
                 set.remove(s.charAt(left));
                 left++;
             }
-
             set.add(currentChar);
             maxLength = Math.max(maxLength, right - left + 1);
         }
-
         return maxLength;
     }
 
